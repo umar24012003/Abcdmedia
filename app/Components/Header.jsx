@@ -5,40 +5,42 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
-  const pathname = usePathname(); 
+  const pathname = usePathname();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { name: "Services", href: "/Services" },
-    { name: "Customers", href: "/customers" },
+    { name: "Customers", href: "/Customers" },
     { name: "Company", href: "/company" },
     { name: "Careers", href: "/careers" },
     { name: "Resources", href: "/resources" },
   ];
 
   return (
-    <header className="w-full bg-white shadow">
+    <header className="w-full bg-white shadow-lg border-b border-purple-200">
       <nav className="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-        {/* Left side: Logo + nav links */}
+        {/* Left: Logo + Nav */}
         <div className="flex items-center space-x-10">
           <Link href="/">
             <Image src="/nerfwar.png" alt="Logo" width={80} height={40} />
           </Link>
 
-          {/* Desktop nav links */}
-          <ul className="hidden md:flex items-center space-x-8 text-purple-600 font-medium">
+          {/* Desktop Nav */}
+          <ul className="hidden md:flex items-center space-x-8 text-purple-700 font-semibold">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <li key={link.name} className="relative flex items-center space-x-1">
                   <Link
                     href={link.href}
-                    className="pb-1 hover:text-purple-600 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-purple-800 after:transition-all hover:after:w-full"
+                    className={`pb-1 transition-all hover:text-purple-900 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-purple-900 after:transition-all hover:after:w-full ${
+                      isActive ? "text-purple-900" : ""
+                    }`}
                   >
                     {link.name}
                   </Link>
                   {link.name === "Services" && (
-                    <span className="text-purple-600">{isActive ? "^" : "v"}</span>
+                    <span className="text-purple-700">{isActive ? "^" : "v"}</span>
                   )}
                 </li>
               );
@@ -46,19 +48,19 @@ export default function Header() {
           </ul>
         </div>
 
-        {/* Right side: Get In Touch button & mobile hamburger */}
+        {/* Right: Button + Mobile */}
         <div className="flex items-center space-x-4">
           <div className="hidden md:block">
             <Link href="/contact">
-              <button className="bg-purple-800 text-white px-5 py-2 rounded-lg font-semibold hover:bg-purple-700">
+              <button className="bg-purple-900 text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-purple-800 transition">
                 Get In Touch
               </button>
             </Link>
           </div>
 
-          {/* Hamburger for mobile */}
+          {/* Mobile Hamburger */}
           <button
-            className="md:hidden text-gray-700 focus:outline-none"
+            className="md:hidden text-purple-900"
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
           >
             <svg
@@ -90,30 +92,32 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 px-6 py-4">
-          <ul className="flex flex-col space-y-3 text-purple-600 font-medium">
+        <div className="md:hidden bg-white border-t border-purple-200 px-6 py-4 shadow">
+          <ul className="flex flex-col space-y-4 text-purple-700 font-semibold">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <li key={link.name} className="flex justify-between items-center">
                   <Link
                     href={link.href}
-                    className={`pb-1 hover:text-purple-600 ${
-                      isActive ? "font-semibold" : ""
+                    className={`pb-1 transition-all hover:text-purple-900 ${
+                      isActive ? "text-purple-900" : ""
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.name}
                   </Link>
                   {link.name === "Services" && (
-                    <span className="text-purple-600">{isActive ? "^" : "v"}</span>
+                    <span className="text-purple-700">{isActive ? "^" : "v"}</span>
                   )}
                 </li>
               );
             })}
+
+            {/* Mobile Button */}
             <li>
               <Link href="/contact">
-                <button className="w-full bg-purple-800 text-white px-5 py-2 rounded-lg font-semibold hover:bg-purple-700">
+                <button className="w-full bg-purple-900 text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-purple-800 transition">
                   Get In Touch
                 </button>
               </Link>

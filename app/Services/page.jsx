@@ -2,10 +2,13 @@ import Image from "next/image";
 
 export default function MergedLayout() {
   return (
-    <div className="flex flex-col lg:flex-row items-stretch gap-10 w-full">
-      <div className="w-full lg:w-1/3 ml-3 h-full">
-        <div className="bg-[#1F2937] text-white p-6 rounded-2xl shadow-lg mb-10 h-full">
-          <h2 className="text-lg font-semibold mb-3">Solutions</h2>
+    <div className="flex flex-col lg:flex-row gap-10 w-full items-stretch min-h-[600px] h-full">
+
+      {/* LEFT PANEL */}
+      <div className="flex-[0.8] h-full ml-3 flex">
+        <div className="bg-purple-900 text-white p-6 rounded-2xl shadow-xl h-full flex flex-col border border-purple-300">
+
+          <h2 className="text-lg font-semibold mb-3 text-purple-200">Solutions</h2>
 
           <div className="flex flex-wrap gap-3 mb-8">
             {[
@@ -18,16 +21,13 @@ export default function MergedLayout() {
               "Shopify",
               "MuleSoft",
             ].map((item) => (
-              <span
-                key={item}
-                className="px-4 py-1 bg-gray-700 rounded-full text-sm"
-              >
+              <span key={item} className="px-4 py-1 bg-purple-700 rounded-full text-sm shadow">
                 {item}
               </span>
             ))}
           </div>
 
-          <h2 className="text-lg font-semibold mb-3">Expertise</h2>
+          <h2 className="text-lg font-semibold mb-3 text-purple-200">Expertise</h2>
 
           <div className="flex flex-wrap gap-3">
             {[
@@ -38,51 +38,53 @@ export default function MergedLayout() {
               "Blockchain",
               "AR/VR/MR",
             ].map((item) => (
-              <span
-                key={item}
-                className="px-4 py-1 bg-gray-700 rounded-full text-sm"
-              >
+              <span key={item} className="px-4 py-1 bg-purple-700 rounded-full text-sm shadow">
                 {item}
               </span>
             ))}
 
-            <span className="px-4 py-1 bg-gray-700 rounded-full text-sm flex items-center gap-2">
+            <span className="px-4 py-1 bg-purple-700 rounded-full text-sm flex items-center gap-2 shadow">
               Data Science
-              <span className="bg-blue-600 text-xs px-2 py-0.5 rounded-full">
+              <span className="bg-purple-300 text-purple-900 text-xs px-2 py-0.5 rounded-full">
                 NEXT GEN
               </span>
             </span>
 
-            <span className="px-4 py-1 bg-gray-800 border border-blue-400 rounded-full text-sm flex items-center gap-2">
+            <span className="px-4 py-1 bg-purple-800 border border-purple-300 rounded-full text-sm flex items-center gap-2 shadow">
               Cybersecurity
-              <span className="bg-orange-500 text-xs px-2 py-0.5 rounded-full">
+              <span className="bg-purple-300 text-purple-900 text-xs px-2 py-0.5 rounded-full">
                 TRENDING
               </span>
             </span>
           </div>
 
-          <div className="p-5">
-            <h3 className="text-lg font-semibold">Watch Featured Webinar</h3>
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold mb-3 text-purple-200">Watch Featured Webinar</h3>
+
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden w-85 h-54 items-center justify-center">
+              <Image
+                src="/nerfwar.png"
+                alt="Featured Webinar"
+                width={800}
+                height={400}
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-            <Image
-              src="/nerfwar.png"
-              alt="Featured Webinar"
-              width={800}
-              height={400}
-              className="rounded-b-2xl"
-            />
-          </div>
+          <div className="flex-grow"></div>
+
         </div>
       </div>
 
-      <div className="w-full lg:w-2/3 bg-white p-10 h-full">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 divide-y md:divide-y-0 md:divide-x">
+      {/* RIGHT PANEL */}
+      <div className="flex-[1.2] bg-white p-10 rounded-2xl shadow-xl h-full flex flex-col border border-purple-200 flex">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 divide-y md:divide-y-0 md:divide-x divide-purple-200 flex-grow">
 
           <div className="flex flex-col gap-3 px-6">
             <h3 className="font-semibold text-lg text-purple-800">Artificial Intelligence</h3>
-            <ul className="space-y-2 text-gray-700">
+            <ul className="space-y-2 text-purple-900">
               <li>AI Agents</li>
               <li>AI Workshop</li>
               <li>Generative AI</li>
@@ -93,7 +95,7 @@ export default function MergedLayout() {
 
           <div className="flex flex-col gap-3 px-6">
             <h3 className="font-semibold text-lg text-purple-800">Digital Marketing</h3>
-            <ul className="space-y-2 mt-5 text-gray-700">
+            <ul className="space-y-2 mt-5 text-purple-900">
               <li>Media Buying</li>
               <li>SEO</li>
               <li>SMM</li>
@@ -105,7 +107,7 @@ export default function MergedLayout() {
 
           <div className="flex flex-col gap-3 px-6">
             <h3 className="font-semibold text-lg text-purple-800">Web Development</h3>
-            <ul className="space-y-2 text-gray-700">
+            <ul className="space-y-2 text-purple-900">
               <li>Word Press</li>
               <li>Shopify</li>
               <li>Custom Code</li>
@@ -115,7 +117,7 @@ export default function MergedLayout() {
 
           <div className="flex flex-col gap-3 px-6 pt-10">
             <h3 className="font-semibold text-lg text-purple-800">IT Consulting</h3>
-            <ul className="space-y-2 text-gray-700">
+            <ul className="space-y-2 text-purple-900">
               <li>Digital Transformation</li>
               <li>Cloud Solutions</li>
               <li>IT Strategy</li>
@@ -125,7 +127,7 @@ export default function MergedLayout() {
 
           <div className="flex flex-col gap-3 px-6 pt-10">
             <h3 className="font-semibold text-lg text-purple-800">Graphics Design</h3>
-            <ul className="space-y-2 text-gray-700">
+            <ul className="space-y-2 text-purple-900">
               <li>UI/UX Design</li>
               <li>Brand Identity</li>
               <li>Content Design</li>
@@ -136,35 +138,26 @@ export default function MergedLayout() {
           </div>
 
           <div className="flex flex-col gap-3 px-6 pt-10">
-  <h3 className="font-semibold text-lg text-purple-800">Company Formation</h3>
-  <ul className="space-y-2 text-gray-700">
-    <li className="flex items-center gap-2">
-      <img src="usa.png" alt="USA" className="w-5 h-5 object-contain" />
-      USA LLC
-    </li>
-    <li className="flex items-center gap-2">
-      <img src="uae.png" alt="UAE" className="w-5 h-5 object-contain" />
-      UAE LLC
-    </li>
-    <li className="flex items-center gap-2">
-      <img src="uk.png" alt="UK" className="w-5 h-5 object-contain" />
-      UK LTD
-    </li>
-    <li className="flex items-center gap-2">
-      <img src="hongkong.png" alt="HK" className="w-5 h-5 object-contain" />
-      HK LTD
-    </li>
-    <li className="flex items-center gap-2">
-      <img src="Eu.png" alt="EU" className="w-5 h-5 object-contain" />
-      EU LTD
-    </li>
-    <li className="flex items-center gap-2">
-      <img src="australia.png" alt="AU" className="w-5 h-5 object-contain" />
-      AU PTY LTD
-    </li>
-  </ul>
-</div>
+            <h3 className="font-semibold text-lg text-purple-800">Company Formation</h3>
+            <ul className="space-y-2 text-purple-900">
+              {[
+                { flag: "usa.png", label: "USA LLC" },
+                { flag: "uae.png", label: "UAE LLC" },
+                { flag: "uk.png", label: "UK LTD" },
+                { flag: "hongkong.png", label: "HK LTD" },
+                { flag: "Eu.png", label: "EU LTD" },
+                { flag: "australia.png", label: "AU PTY LTD" },
+              ].map((item) => (
+                <li key={item.label} className="flex items-center gap-2">
+                  <img src={item.flag} alt={item.label} className="w-5 h-5 object-contain" />
+                  {item.label}
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
+
       </div>
     </div>
   );
